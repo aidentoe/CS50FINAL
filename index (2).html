@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Your Habits</h2>
+
+{% if habits %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Done Today</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for habit in habits %}
+        <tr>
+            <td>{{ habit.name }}</td>
+            <td>{{ habit.description }}</td>
+            <td>{{ "✅" if habit.done_today else "❌" }}</td>
+            <td>
+                <form action="/track" method="post">
+                    <input type="hidden" name="habit_id" value="{{ habit.id }}">
+                    <button class="btn btn-sm btn-success" type="submit">
+                        {% if habit.done_today %}Undo{% else %}Mark Done{% endif %}
+                    </button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>You have no habits yet. <a href="/add">Add one!</a></p>
+{% endif %}
+{% endblock %}

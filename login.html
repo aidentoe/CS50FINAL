@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Login</h2>
+<form action="/login" method="post">
+    <div class="mb-3">
+        <label>Username</label>
+        <input class="form-control" name="username" type="text" required>
+    </div>
+    <div class="mb-3">
+        <label>Password</label>
+        <input class="form-control" name="password" type="password" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
+<p class="mt-2">Don't have an account? <a href="/register">Register here</a></p>
+{% endblock %}

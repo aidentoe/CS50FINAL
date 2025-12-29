@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Add a New Habit</h2>
+<form action="/add" method="post">
+    <div class="mb-3">
+        <label>Habit Name</label>
+        <input class="form-control" name="name" type="text" required>
+    </div>
+    <div class="mb-3">
+        <label>Description (optional)</label>
+        <input class="form-control" name="description" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Habit</button>
+</form>
+{% endblock %}
